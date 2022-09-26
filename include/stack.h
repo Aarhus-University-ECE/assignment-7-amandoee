@@ -11,7 +11,7 @@ typedef struct node
 } node;
 
 
-typedef struct{
+typedef struct stack{
   node* head;
 } stack;
 

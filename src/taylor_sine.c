@@ -8,7 +8,7 @@ bool compare_float(double tal1, double tal2, int precision) {
     double precision_decimal = pow(10,-precision);
 
     if (fabs(tal1-tal2) < precision_decimal) {
-        printf("%d", fabs(tal1-tal2));
+        printf("%x", fabs(tal1-tal2));
         printf("%d", precision_decimal);
         return true;
     } else {
@@ -37,7 +37,7 @@ double taylor_sine(double x, int n)
 
     for (i=1; compare_float(previous_sum,sum,n) == false; i++) {
 
-        printf("sin(x)=%d %d", previous_sum, sum);
+        printf(" sin(x)=%x, %x", previous_sum, sum);
 
         sum = (-(pow(x,1+2*i)/factorial(1+2*i)));
         
