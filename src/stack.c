@@ -1,6 +1,7 @@
 #include "stack.h"
 #include <stdlib.h>
 
+struct node *head = NULL;
 
 void initialize(stack* s){
   //implement initialize 
@@ -10,37 +11,39 @@ void initialize(stack* s){
 
 void push(int x, stack *s){
     //implement push here
-    s = (struct stack *)malloc(sizeof(struct stack));
+
+    s = malloc(sizeof(struct node));
     s->head->data = x;
 
-    //->data = x; //Angiver x som data til stacken
+    //lav en ny node der pointer til headernoden
+    s->head->next = s->head;
 
-    if (s->head==NULL) {
-      s->head->next = NULL;
-    } else {
-      s->head->next = s->head;
-    }
-    s->head = s; 
-    //top refererer til den nyeste skabte node
-    
-
-
+    //make the new node as head node
+    //so that head will always point the last inserted data
+    s->head = s;
 
 }
 
 int pop(stack* s){
     // implement pop here
 
-    //Tjek for om der er indhold i stack at fjerne.
-    if (s->head == NULL) {
-      printf("\n Tom stack!");
+    struct node *temp;
+
+    if (s->head==NULL) {
+      printf("stack er tom");
     } else {
-      s = s->head;
-      int temp_data = s->head->data;
+      printf("Fjernede element er %d \n", head->data);
+
+      temp = s->head;
+
       s->head = s->head->next;
-      free(s);
-      return temp_data;
+
+      free(temp);
+
+
     }
+    //Tjek for om der er indhold i stack at fjerne.
+    
 }
 
 bool empty(stack* s)
