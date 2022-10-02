@@ -10,7 +10,6 @@ typedef struct node
     struct node* next;
 } node;
 
-
 typedef struct stack{
   node* head;
 } stack;

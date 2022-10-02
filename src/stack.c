@@ -1,39 +1,46 @@
 #include "stack.h"
 #include <stdlib.h>
 
-struct node *prev, *head, *p;
-
 
 void initialize(stack* s){
   //implement initialize 
-  int n;
-  //allocating memory
-  //ptr = (struct stack*)malloc(sizeof(struct stack));
-  printf ("number of elements:");
-  scanf("%d",&n);
-  
-  head=NULL;
-  for (int i=0;i<n;i++)
-    {
-        p=malloc(sizeof(struct node));
-        scanf("%d",&p->data);
-        p->next=NULL;
-        if(head==NULL)
-            head=p;
-        else
-            prev->next=p;
-        prev=p;
-    }
+  s->head = NULL;
 
 }
 
-void push(int x, stack* s){
+void push(int x, stack *s){
     //implement push here
+    s = (struct stack *)malloc(sizeof(struct stack));
+    s->head->data = x;
+
+    //->data = x; //Angiver x som data til stacken
+
+    if (s->head==NULL) {
+      s->head->next = NULL;
+    } else {
+      s->head->next = s->head;
+    }
+    s->head = s; 
+    //top refererer til den nyeste skabte node
+    
+
+
+
 }
 
 int pop(stack* s){
     // implement pop here
-  return -1;
+
+    //Tjek for om der er indhold i stack at fjerne.
+    if (s->head == NULL) {
+      printf("\n Tom stack!");
+    } else {
+      s = s->head;
+      int temp_data = s->head->data;
+      s->head = s->head->next;
+      free(s);
+      return temp_data;
+    }
 }
 
 bool empty(stack* s)

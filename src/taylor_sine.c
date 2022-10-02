@@ -3,27 +3,33 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-bool compare_float(double tal1, double tal2, int precision) {
+int compare_float(double tal1, double tal2, int precision) {
 
     double precision_decimal = pow(10,-precision);
 
     if (fabs(tal1-tal2) < precision_decimal) {
-        printf("%x", fabs(tal1-tal2));
-        printf("%d", precision_decimal);
-        return true;
+        return 1;
     } else {
-        return false;
+        return 0;
     }
 
 }
 
-int factorial(int n) {
+double factorial(int n) {
 
+    /*
     int sum = 1;
     for (int i=n; i>0; i--) {
         sum*=i;
     }
-    return sum;
+    */
+
+   double res = 1;
+   for (int i = 1; i<n+1;i++) {
+    res *= i;
+   }
+
+    return res;
 }
 
 
@@ -31,22 +37,28 @@ int factorial(int n) {
 double taylor_sine(double x, int n)
 {
     int i;
-    double sum = -1;
+    double xn = -1;
     double previous_sum = x;
-    bool check;
+    double pre_previous_sum = 0;
+    int check = 0;
 
-    for (i=1; compare_float(previous_sum,sum,n) == false; i++) {
+    for (i=1; check==0; i++) {
 
-        printf(" sin(x)=%x, %x", previous_sum, sum);
 
-        sum = (-(pow(x,1+2*i)/factorial(1+2*i)));
-        
+        xn = (-(pow(x,1+2*i)/factorial(1+2*i)));
+
+
         if (i%2 == 0) {
-            sum=-sum;
+            xn=-xn;
         }
 
-        previous_sum+=sum;
+        pre_previous_sum = previous_sum;
+        previous_sum += xn;
+
+        if (compare_float(previous_sum,pre_previous_sum,n)==1) {
+            check = 1;
+        }
     }
     
-    return sum;
+    return previous_sum;
 }
