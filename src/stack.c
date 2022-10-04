@@ -3,15 +3,9 @@
 
 
 void initialize(stack* s){
-  //implement initialize 
-  //node *head=initialize();
   
-  //s->head=(malloc(sizeof(node)));
-
   s->head=NULL;
 
-
-  //s->head->next=NULL;
 }
 
 void push(int x, stack *s){
@@ -40,17 +34,15 @@ int pop(stack* s){
     
   node* temp = s->head;
 
-  while (temp->next!=NULL) {
+  while (temp->next->next!=NULL) {
       temp=temp->next;
     }
 
-  int value = temp->data;
-  temp = NULL;
-
+  int value = temp->next->data;
+  temp->next = NULL;
   if (s->head->next == NULL) {
     s->head=NULL;
   }
-
   return value;
 }
 
