@@ -37,6 +37,7 @@ TEST_CASE("stack"){
     REQUIRE(x == y);
     REQUIRE(sb1.head == sb0.head);
 
+
     stack sc0;
     initialize(&sc0);
     stack sc1 = sc0;
