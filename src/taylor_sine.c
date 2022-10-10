@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+//Function to compare the similarity of two double values. Determines whether or not the two values are equal up to a certain degree of precision (n decimal points).
 int compare_float(double tal1, double tal2, int precision) {
 
     double precision_decimal = pow(10,-precision);
@@ -15,6 +16,7 @@ int compare_float(double tal1, double tal2, int precision) {
 
 }
 
+//Function to calculate the factorial of a given number.
 double factorial(int n) {
 
    double res = 1;
@@ -26,7 +28,7 @@ double factorial(int n) {
 }
 
 
-//angiv n antal decimaler til præcision.
+//Function for approximating the sine of a given angle using the Taylor series. The loop stops when the difference between the current and previous approximation is less than a certain degree of precision (n decimal points).
 double taylor_sine(double x, int n)
 {
     int i;
@@ -36,11 +38,7 @@ double taylor_sine(double x, int n)
     int check = 0;
 
     for (i=1; check==0; i++) {
-
-
         xn = (-(pow(x,1+2*i)/factorial(1+2*i)));
-
-
         if (i%2 == 0) {
             xn=-xn;
         }
