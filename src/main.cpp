@@ -11,7 +11,7 @@ int main(int argc, char **argv)
 {
     
 
-    // Test cases for Exercise 1b). The printed output shows comparison of the two functions.
+    // Test cases for Exercise 1b). The printed output shows comparison of the two function
     for (int i = -31; i < 32; i++) {
         double x = i * 0.1;
         printf("\n\n");
