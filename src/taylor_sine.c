@@ -17,13 +17,6 @@ int compare_float(double tal1, double tal2, int precision) {
 
 double factorial(int n) {
 
-    /*
-    int sum = 1;
-    for (int i=n; i>0; i--) {
-        sum*=i;
-    }
-    */
-
    double res = 1;
    for (int i = 1; i<n+1;i++) {
     res *= i;
@@ -57,7 +50,7 @@ double taylor_sine(double x, int n)
 
         if (compare_float(previous_sum,pre_previous_sum,n)==1) {
             check = 1;
-        }
+        } 
     }
     
     return previous_sum;
